@@ -20,3 +20,43 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+#container {
+  width: 1048px;
+  margin: 30px auto;
+  border: 1px solid gray;
+  padding:10px;
+  display: flex;
+  flex-direction:column;
+  align-items:center;
+  background-color: rgb(236, 240, 230);
+  color: rgb(77, 73, 73);
+  border-radius: 5px;
+}
+
+.AlbumList {
+  display: flex;
+  flex-wrap:wrap;
+}
+
+.park {
+  margin: 0 20px;
+  margin-bottom: 50px;
+  display: flex;
+  flex-direction:column;
+  align-items:center;
+  border: 1px solid gray;
+  border-radius: 5px;
+}
+
+h1 {
+  border-bottom: 1px solid gray;
+}
+
+.park img {
+  height:300px;
+}
+
+.park p {
+  font-weight: 700;
+}

@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
+import {BrowserRouter as Router,  Route} from 'react-router-dom'
 import '../styles/base.css'
-import axios from 'axios'
+import AlbumList from './AlbumList'
+import ImageList from './ImageList'
 
-axios.get('http://localhost:3001/albums').then(resp =>{
-  console.log(resp.data)
-})
 
-class App extends Component {
-  render() {
-    return (
-      <h1>Hello world</h1>
-    )
-  }
-}
+const App = (props) => (
+  <Router>
+    <div id="container">
+      <Route exact path="/" component={AlbumList} />
+      <Route path="/Albums/:id" component={ImageList} />
+      <Route path="/Contact/:id" component={Image} />
+    </div>
+  </Router>
+)
 
-export default App;
+export default App
