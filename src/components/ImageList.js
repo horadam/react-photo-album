@@ -1,50 +1,43 @@
 import React, {Fragment, Component} from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
+import AlbumNav from './AlbumNav'
 
 class ImageList extends Component {
     state = {
-        albums: [],
+        albumSelected: [],
         images: [],
-        parkSelected: ''
+        albums: []
     }
 
-    componentDidMount() {
-        axios.get('http://localhost:3001/albums').then(resp =>{
+    getAlbum(id) {
+        axios.get(`http://localhost:3001/albums/${id}?_embed=images`).then(resp =>{
             this.setState({
-            albums: resp.data
-            })
-
-            const id = Number(this.props.match.params.id)
-
-            console.log(id)
-
-            const parkSelected = this.state.albums.find(parks => parks.id === id)
-
-            console.log(parkSelected)
-
-            this.setState({
-                parkSelected: this.state.albums.find(parks => parks.id === id)
+            albumSelected: resp.data.name,
+            images: resp.data.images,
             })
            
         })
+    }
 
-        axios.get('http://localhost:3001/images').then(resp =>{
 
-            const id = Number(this.props.match.params.id)
+    componentWillReceiveProps(newprops) {
+        if (newprops.match.params.id !== this.props.match.params.id)
+        {
+        const id = Number(newprops.match.params.id)
+        this.getAlbum(id)
+        }
+    }
 
-            const imagesSelected = resp.data.filter(images => images.albumId = id)
-
-            console.log(imagesSelected)
+    componentDidMount() {
+        const id = Number(this.props.match.params.id)
+        this.getAlbum(id)
         
-            this.setState({
-            images: imagesSelected,
+
+        axios.get(`http://localhost:3001/albums`)
+            .then(albums =>{
+                this.setState({albums:albums.data})
             })
-
-            console.log(this.state.images)
-        })
-
-       
 
        
 
@@ -60,28 +53,23 @@ class ImageList extends Component {
         return(  
             <Fragment>
                 
-                <h1>{this.state.parkSelected.name}</h1>
+                <h1>{this.state.albumSelected}</h1>
                
             
                 <div>
                     <div className="left">
-                        <ul className="parkList">
-                        {this.state.albums.map(park => (
-                            <li key={`park-${park.id}`}>
-                                <Link to={"/Albums/"+park.id}>
-                                <p>{park.name}, {park.state}</p>
-                                </Link>
-                            </li> 
-                            ))}
-                        </ul>
+                        <AlbumNav albums={this.state.albums}/>
 
                     </div>
-                    <div className="right">
-                            {/* {this.state.images.filter(image => (
-                                <div>
-                                    <img src={image.albumId=this.state.parkSelected.id}></img>
+                    <div className="imgView">
+                            {this.state.images.map(image => (
+                                <div className="imgLinks">
+                                    <Link to={"/Images/" + image.id}>
+                                        <img src={image.url}></img>
+                                        <p>{image.id}</p>
+                                    </Link>
                                 </div>
-                            ))} */}
+                            ))}
                     </div>
                 </div>
             </Fragment>
