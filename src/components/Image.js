@@ -21,7 +21,7 @@ class Image extends Component {
 
     render() {
         return (
-            <div>
+            <div className="singleImageView">
                 <Link to={'/Albums/'+this.state.albumId}>&lt; Back to Album</Link>
                 <img src={this.state.image}></img>
             </div>

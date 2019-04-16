@@ -8,6 +8,7 @@ import axios from 'axios'
 class AlbumList extends Component { 
     state = {
         albums: [],
+        
     }
 
     componentDidMount() {
@@ -29,7 +30,7 @@ class AlbumList extends Component {
                     {this.state.albums.map(park => (
                         <div key={`park-${park.id}`} 
                         className="park">
-                        <Link to={"/Albums/"+park.name}>
+                        <Link to={"/Albums/"+park.id}>
                             <img src={park.pic}/> 
                             <p>{park.name}, {park.state}</p>
                         </Link>

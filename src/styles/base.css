@@ -107,3 +107,13 @@ h1 {
         max-width:220px;
         border-radius:5px;
       }
+
+
+    .singleImageView {
+      display:flex;
+      flex-direction:column;
+    }
+
+      .singleImageView img{
+        max-width:100%;
+      }
