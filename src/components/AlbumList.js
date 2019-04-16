@@ -29,7 +29,7 @@ class AlbumList extends Component {
                     {this.state.albums.map(park => (
                         <div key={`park-${park.id}`} 
                         className="park">
-                        <Link to={"/Albums/"+park.id}>
+                        <Link to={"/Albums/"+park.name}>
                             <img src={park.pic}/> 
                             <p>{park.name}, {park.state}</p>
                         </Link>

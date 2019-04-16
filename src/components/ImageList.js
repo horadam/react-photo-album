@@ -56,8 +56,8 @@ class ImageList extends Component {
                 <h1>{this.state.albumSelected}</h1>
                
             
-                <div>
-                    <div className="left">
+                <div id="imageListContainer">
+                    <div className="parksList">
                         <AlbumNav albums={this.state.albums}/>
 
                     </div>

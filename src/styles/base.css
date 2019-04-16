@@ -34,6 +34,11 @@ code {
   border-radius: 5px;
 }
 
+a {
+  text-decoration:none;
+  color:  rgb(77, 73, 73);
+}
+
 .AlbumList {
   display: flex;
   flex-wrap:wrap;
@@ -57,26 +62,48 @@ h1 {
   height:300px;
 }
 
-.park p {
+.park p,.imgLinks p {
   font-weight: 700;
+  text-align: center;
 }
 
-.imgView {
+#imageListContainer {
   display: flex;
-  flex-wrap:wrap;
+  margin-top:10px;
 }
 
-.imgLinks {
-  margin: 0 20px;
-  margin-bottom: 50px;
-  display: flex;
-  flex-direction:column;
-  align-items:center;
-  /* border: 1px solid gray;
-  border-radius: 5px; */
-}
+  .parksList {
+    width: 400px;
+  }
+  .parksList ul {
+    padding: 0;
+    border-right: 1px solid gray;
+    /* margin-right: 20px; */
+  }
+    .parksList li {
+        list-style:none;
+        text-align: left;
+        margin-bottom:40px;
+        font-size:16px;
+      }
 
-.imgLinks img {
-  max-width:250px;
-  border-radius:5px;
-}
+    .imgView {
+      display: flex;
+      flex-wrap:wrap;
+      margin-left:20px;
+    }
+
+    .imgLinks {
+      margin: 0 20px;
+      margin-bottom: 50px;
+      display: flex;
+      flex-direction:column;
+      align-items:center;
+      /* border: 1px solid gray;
+      border-radius: 5px; */
+    }
+
+      .imgLinks img {
+        max-width:220px;
+        border-radius:5px;
+      }
